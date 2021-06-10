@@ -11,6 +11,7 @@ const bankingSlice = createSlice({
   initialState,
   reducers: {
     DEPOSIT: (state, action) => {
+      console.log(action.payload.balance);
       return { ...state, balance: state.balance + action.payload.balance };
     },
     WITHDRAWAL: (state, action) => {
