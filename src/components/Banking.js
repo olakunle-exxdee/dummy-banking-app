@@ -9,7 +9,7 @@ import {
 } from "../redux/bankingSlice";
 
 const Banking = () => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const handleAmount = (e) => {
     setAmount(parseInt(e.target.value));
   };
@@ -21,6 +21,7 @@ const Banking = () => {
         balance: amount,
       })
     );
+    setAmount("");
   };
   const handleWithdraw = () => {
     dispatch(
@@ -41,7 +42,12 @@ const Banking = () => {
   };
   return (
     <div className="form-group">
-      <input type="text" className="form-control" onChange={handleAmount} />
+      <input
+        value={amount}
+        type="text"
+        className="form-control"
+        onChange={handleAmount}
+      />
       <button onClick={handleDeposit} className="btn btn-success">
         deposit
       </button>
