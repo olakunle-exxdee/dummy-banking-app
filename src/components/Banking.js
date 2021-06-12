@@ -11,7 +11,10 @@ import {
 const Banking = () => {
   const [amount, setAmount] = useState("");
   const handleAmount = (e) => {
-    setAmount(parseInt(e.target.value));
+    const re = /^[0-9\b]+$/;
+    if (e.target.value === "" || re.test(e.target.value)) {
+      setAmount(parseInt(e.target.value));
+    }
   };
 
   const dispatch = useDispatch();
@@ -29,6 +32,7 @@ const Banking = () => {
         balance: amount,
       })
     );
+    setAmount("");
   };
   const handleInterest = () => {
     dispatch(COLLECT_INTEREST());
@@ -66,5 +70,4 @@ const Banking = () => {
     </div>
   );
 };
-
 export default Banking;

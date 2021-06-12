@@ -11,13 +11,12 @@ const bankingSlice = createSlice({
   initialState,
   reducers: {
     DEPOSIT: (state, action) => {
-      console.log(action.payload.balance);
       return { ...state, balance: state.balance + action.payload.balance };
     },
     WITHDRAWAL: (state, action) => {
       return { ...state, balance: state.balance - action.payload.balance };
     },
-    COLLECT_INTEREST: (state) => {
+    COLLECT_INTEREST: (state, action) => {
       return { ...state, balance: state.balance * 1.03 };
     },
     DELETE_ACCOUNT: (state) => {
